@@ -33,7 +33,7 @@ export default function Footer() {
               className="social-icon"
               aria-label="Instagram"
             >
-              𓅓
+              <img src="/icons/instagram.svg" alt="Instagram" />
             </a>
             <a
               href="https://x.com/GhumooWithUs?t=7E7vXyCdKZq8TWnTSwX3JQ&s=08"
@@ -42,7 +42,7 @@ export default function Footer() {
               className="social-icon"
               aria-label="X (Twitter)"
             >
-              X
+              <img src="/icons/x.svg" alt="X" />
             </a>
             <a
               href="https://www.facebook.com/share/1VogzJhQh8/"
@@ -51,7 +51,16 @@ export default function Footer() {
               className="social-icon"
               aria-label="Facebook"
             >
-              f
+              <img src="/icons/facebook.svg" alt="Facebook" />
+            </a>
+            <a
+              href="https://youtube.com/@ghumoowithus?si=H2-uXOmtNFjdo_MF"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icon"
+              aria-label="YouTube"
+            >
+              <img src="/icons/youtube.svg" alt="YouTube" />
             </a>
           </div>
         </div>

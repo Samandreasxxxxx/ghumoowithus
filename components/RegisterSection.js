@@ -1,13 +1,35 @@
 // components/RegisterSection.js
 import { useState } from 'react';
 
+const TRIP_FORM_ACTION =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeOjnER_RpQ5Z4jmcpuclUeaaXLsvXR-tbZLuUdS1ZLxUbZRQ/formResponse';
+
 export default function RegisterSection({ standalone = false }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
-    // In production: send this to your backend / Google Sheet / CRM.
+    setLoading(true);
+    setSubmitted(false);
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      await fetch(TRIP_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      });
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      console.error('Error submitting trip form', err);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -33,45 +55,118 @@ export default function RegisterSection({ standalone = false }) {
 
         <form className="register-form" onSubmit={handleSubmit}>
           <div className="register-field">
-            <label htmlFor="name">Full name*</label>
-            <input id="name" name="name" required />
+            <label htmlFor="reg-name">Full name*</label>
+            <input
+              id="reg-name"
+              required
+              name="entry.367631426" // Name
+            />
           </div>
+
           <div className="register-field">
-            <label htmlFor="phone">WhatsApp / Phone*</label>
-            <input id="phone" name="phone" required />
+            <label htmlFor="reg-phone">WhatsApp / Phone*</label>
+            <input
+              id="reg-phone"
+              required
+              name="entry.1705815425" // Phone
+            />
           </div>
+
           <div className="register-field">
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" />
+            <label htmlFor="reg-email">Email</label>
+            <input
+              id="reg-email"
+              type="email"
+              name="entry.101797539" // Email
+            />
           </div>
+
           <div className="register-field">
-            <label htmlFor="city">City you&apos;re based in</label>
-            <input id="city" name="city" />
+            <label htmlFor="reg-city">City you&apos;re based in</label>
+            <input
+              id="reg-city"
+              name="entry.885686311" // City
+            />
           </div>
+
           <div className="register-field">
-            <label htmlFor="trip">Which trip are you eyeing?</label>
-            <select id="trip" name="trip">
-              <option>Cuttack → Kendrapada</option>
-              <option>Any short weekend from Odisha</option>
-              <option>Future India trips</option>
-              <option>International (Kenya etc.)</option>
+            <label htmlFor="reg-trip">Which trip are you eyeing?</label>
+            <select
+              id="reg-trip"
+              name="entry.1351065948" // Trip selection
+              defaultValue="Cuttack → Kendrapada (Available Now)"
+            >
+              <option value="Cuttack → Kendrapada (Available Now)">
+                Cuttack → Kendrapada (Available Now)
+              </option>
+              <option value="Any short weekend from Odisha">
+                Any short weekend from Odisha
+              </option>
+              <option value="Future India trips">Future India trips</option>
+              <option value="International (Kenya etc.)">
+                International (Kenya etc.)
+              </option>
             </select>
           </div>
-          <div className="register-field" style={{ gridColumn: '1 / -1' }}>
-            <label htmlFor="notes">Anything we should know?</label>
-            <textarea id="notes" name="notes" />
+
+          <div className="register-field">
+            <label htmlFor="reg-month">Preferred travel month</label>
+            <select
+              id="reg-month"
+              name="entry.380390246" // Preferred month
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Choose a month
+              </option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
           </div>
+
+          <div className="register-field">
+            <label htmlFor="reg-travellers">Number of travellers</label>
+            <input
+              id="reg-travellers"
+              type="number"
+              min="1"
+              name="entry.647059908" // Number of travellers
+            />
+          </div>
+
+          <div className="register-field" style={{ gridColumn: '1 / -1' }}>
+            <label htmlFor="reg-notes">Anything we should know?</label>
+            <textarea
+              id="reg-notes"
+              name="entry.900129480" // Extra / notes
+            />
+          </div>
+
           <div style={{ gridColumn: '1 / -1' }}>
-            <button type="submit" className="btn btn-primary">
-              Send details
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+            >
+              {loading ? 'Sending…' : 'Send details'}
             </button>
           </div>
         </form>
 
         {submitted && (
           <p className="register-success">
-            Thank you! Connect this form to an email or database, and you&apos;ll
-            start getting real enquiries here.
+            Thank you! Your details were sent to your Trip Registrations Google
+            Sheet.
           </p>
         )}
       </div>

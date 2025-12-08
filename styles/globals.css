@@ -16,7 +16,22 @@ html,
 body {
   padding: 0;
   margin: 0;
-  scroll-behavior: smooth;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
@@ -539,8 +554,16 @@ section {
 /* Doodle strip */
 
 .doodle-strip {
-  background: radial-gradient(circle at 0% 100%, rgba(229, 208, 172, 0.65), transparent 55%),
-    radial-gradient(circle at 100% 0%, rgba(163, 29, 29, 0.8), transparent 60%),
+  background: radial-gradient(
+      circle at 0% 100%,
+      rgba(229, 208, 172, 0.65),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(163, 29, 29, 0.8),
+      transparent 60%
+    ),
     #111827;
   color: var(--color-light);
   border-radius: 1.5rem;
@@ -553,18 +576,157 @@ section {
 
 .doodle-canvas {
   flex: 1;
-  min-height: 110px;
+  min-height: 140px;
   border-radius: 1rem;
   border: 1px dashed rgba(254, 249, 225, 0.65);
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  opacity: 0.8;
 }
+
+.doodle-orbit {
+  position: relative;
+  width: 100%;
+  max-width: 230px;
+  aspect-ratio: 4 / 3;
+}
+
+.doodle-orbit::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 12%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(229, 208, 172, 0.5),
+    rgba(254, 249, 225, 0.1)
+  );
+}
+
+/* Sun */
+
+.doodle-sun {
+  position: absolute;
+  top: 6%;
+  left: 8%;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #fee2a5, #f97316);
+  box-shadow: 0 0 25px rgba(248, 250, 252, 0.4);
+}
+
+/* Bus / van */
+
+.doodle-bus {
+  position: absolute;
+  bottom: 10%;
+  left: 18%;
+  width: 120px;
+  height: 42px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.7);
+  animation: doodle-bob 3s ease-in-out infinite;
+}
+
+.doodle-bus::before,
+.doodle-bus::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #020617;
+  box-shadow: 0 0 0 3px #0f172a;
+}
+
+.doodle-bus::before {
+  left: 13px;
+}
+
+.doodle-bus::after {
+  right: 13px;
+}
+
+/* Clouds */
+
+.doodle-cloud {
+  position: absolute;
+  top: 18%;
+  right: 16%;
+  width: 52px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.9);
+  box-shadow: 0 0 18px rgba(15, 23, 42, 0.5);
+  animation: doodle-drift 7s ease-in-out infinite;
+}
+
+.doodle-cloud::before,
+.doodle-cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.doodle-cloud::before {
+  width: 32px;
+  height: 28px;
+  left: -14px;
+  top: -6px;
+}
+
+.doodle-cloud::after {
+  width: 26px;
+  height: 22px;
+  right: -10px;
+  top: -4px;
+}
+
+.doodle-cloud-1 {
+  transform: translateX(-14px);
+}
+
+.doodle-cloud-2 {
+  top: 28%;
+  right: 26%;
+  transform: scale(0.8);
+  animation-duration: 9s;
+}
+
+/* Animations */
+
+@keyframes doodle-bob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes doodle-drift {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
 /* Testimonials */
 
@@ -801,6 +963,13 @@ section {
   opacity: 0.85;
   transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
+
+.social-icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 
 .social-icon:hover {
   opacity: 1;
