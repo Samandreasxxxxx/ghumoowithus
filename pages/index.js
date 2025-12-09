@@ -27,6 +27,7 @@ export default function Home() {
       <TestimonialsSection />
       <BlogPreviewSection />
       <NewsletterSection />
+      {/* This is the original bottom 'Register your interest' – unchanged */}
       <RegisterSection />
     </>
   );

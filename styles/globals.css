@@ -16,8 +16,10 @@ html,
 body {
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
+/* Lenis helpers */
 html.lenis {
   height: auto;
 }
@@ -40,7 +42,7 @@ body {
   color: #111827;
 }
 
-/* Utility layout */
+/* Layout */
 
 main {
   min-height: 100vh;
@@ -249,8 +251,7 @@ section {
   content: "";
   position: absolute;
   inset: -20%;
-  /* Cinematic road in the mountains (Pexels) */
-  background-image: url("https://images.pexels.com/photos/10583922/pexels-photo-10583922.jpeg?cs=srgb&dl=pexels-dendoktoor-10583922.jpg&fm=jpg");
+  background-image: url("https://images.pexels.com/photos/10583922/pexels-photo-10583922.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-position: center;
   background-size: cover;
   opacity: 0.25;
@@ -364,7 +365,7 @@ section {
   }
 }
 
-/* SECTIONS & CARDS */
+/* SECTIONS */
 
 .section-heading {
   font-size: 2rem;
@@ -386,7 +387,7 @@ section {
   margin-bottom: 2rem;
 }
 
-/* Featured trip */
+/* FEATURED TRIP */
 
 .featured {
   background: linear-gradient(145deg, rgba(229, 208, 172, 0.18), rgba(254, 249, 225, 0.9));
@@ -466,15 +467,14 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  /* Kerala-style backwaters boat shot (Pexels) for a chill India vibe */
-  background-image: url("https://images.pexels.com/photos/31852050/pexels-photo-31852050.jpeg?cs=srgb&dl=pexels-harish-p-115809860-31852050.jpg&fm=jpg");
+  background-image: url("https://images.pexels.com/photos/31852050/pexels-photo-31852050.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-size: cover;
   background-position: center;
   mix-blend-mode: soft-light;
   opacity: 0.75;
 }
 
-/* Coming soon grid */
+/* COMING SOON GRID */
 
 .coming-grid {
   display: grid;
@@ -540,8 +540,6 @@ section {
   font-size: 0.7rem;
 }
 
-/* Coming soon label */
-
 .coming-label {
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
@@ -551,19 +549,11 @@ section {
   letter-spacing: 0.16em;
 }
 
-/* Doodle strip */
+/* DOODLE STRIP */
 
 .doodle-strip {
-  background: radial-gradient(
-      circle at 0% 100%,
-      rgba(229, 208, 172, 0.65),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(163, 29, 29, 0.8),
-      transparent 60%
-    ),
+  background: radial-gradient(circle at 0% 100%, rgba(229, 208, 172, 0.65), transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba(163, 29, 29, 0.8), transparent 60%),
     #111827;
   color: var(--color-light);
   border-radius: 1.5rem;
@@ -701,7 +691,7 @@ section {
   animation-duration: 9s;
 }
 
-/* Animations */
+/* Doodle animations */
 
 @keyframes doodle-bob {
   0% {
@@ -727,8 +717,7 @@ section {
   }
 }
 
-
-/* Testimonials */
+/* TESTIMONIALS */
 
 .testimonials {
   background: #fdf7e8;
@@ -790,7 +779,7 @@ section {
   opacity: 0.88;
 }
 
-/* Blog */
+/* BLOG */
 
 .blog-grid {
   display: grid;
@@ -831,7 +820,7 @@ section {
   opacity: 0.8;
 }
 
-/* Newsletter */
+/* NEWSLETTER */
 
 .newsletter {
   background: #0f172a;
@@ -865,7 +854,7 @@ section {
   color: rgba(254, 249, 225, 0.6);
 }
 
-/* Register section */
+/* REGISTER */
 
 .register {
   background: var(--color-light);
@@ -883,6 +872,10 @@ section {
   flex-direction: column;
   gap: 0.35rem;
   font-size: 0.85rem;
+}
+
+.register-field label {
+  font-weight: 600;
 }
 
 .register-field input,
@@ -903,6 +896,36 @@ section {
   margin-top: 1rem;
   font-size: 0.85rem;
   color: var(--color-maroon);
+}
+
+/* ABOUT PAGE */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+
+.about-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.about-photo img {
+  width: 100%;
+  border-radius: 1.1rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  display: block;
+  object-fit: cover;
 }
 
 /* FOOTER */
@@ -964,18 +987,17 @@ section {
   transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
-.social-icon img {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-
 .social-icon:hover {
   opacity: 1;
   transform: translateY(-2px);
   background: rgba(254, 249, 225, 0.05);
   border-color: rgba(248, 250, 252, 0.8);
+}
+
+.social-icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .footer-bottom {
@@ -1015,6 +1037,20 @@ section {
 
   .footer-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .doodle-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doodle-canvas {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1063,5 +1099,9 @@ section {
 
   .hero-inner {
     padding-top: 3.5rem;
+  }
+
+  .about-photos {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

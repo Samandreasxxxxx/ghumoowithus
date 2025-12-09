@@ -56,44 +56,29 @@ export default function RegisterSection({ standalone = false }) {
         <form className="register-form" onSubmit={handleSubmit}>
           <div className="register-field">
             <label htmlFor="reg-name">Full name*</label>
-            <input
-              id="reg-name"
-              required
-              name="entry.367631426" // Name
-            />
+            <input id="reg-name" required name="entry.367631426" />
           </div>
 
           <div className="register-field">
             <label htmlFor="reg-phone">WhatsApp / Phone*</label>
-            <input
-              id="reg-phone"
-              required
-              name="entry.1705815425" // Phone
-            />
+            <input id="reg-phone" required name="entry.1705815425" />
           </div>
 
           <div className="register-field">
             <label htmlFor="reg-email">Email</label>
-            <input
-              id="reg-email"
-              type="email"
-              name="entry.101797539" // Email
-            />
+            <input id="reg-email" type="email" name="entry.101797539" />
           </div>
 
           <div className="register-field">
             <label htmlFor="reg-city">City you&apos;re based in</label>
-            <input
-              id="reg-city"
-              name="entry.885686311" // City
-            />
+            <input id="reg-city" name="entry.885686311" />
           </div>
 
           <div className="register-field">
             <label htmlFor="reg-trip">Which trip are you eyeing?</label>
             <select
               id="reg-trip"
-              name="entry.1351065948" // Trip selection
+              name="entry.1351065948"
               defaultValue="Cuttack → Kendrapada (Available Now)"
             >
               <option value="Cuttack → Kendrapada (Available Now)">
@@ -113,7 +98,7 @@ export default function RegisterSection({ standalone = false }) {
             <label htmlFor="reg-month">Preferred travel month</label>
             <select
               id="reg-month"
-              name="entry.380390246" // Preferred month
+              name="entry.380390246"
               defaultValue=""
             >
               <option value="" disabled>
@@ -140,16 +125,13 @@ export default function RegisterSection({ standalone = false }) {
               id="reg-travellers"
               type="number"
               min="1"
-              name="entry.647059908" // Number of travellers
+              name="entry.647059908"
             />
           </div>
 
           <div className="register-field" style={{ gridColumn: '1 / -1' }}>
             <label htmlFor="reg-notes">Anything we should know?</label>
-            <textarea
-              id="reg-notes"
-              name="entry.900129480" // Extra / notes
-            />
+            <textarea id="reg-notes" name="entry.900129480" />
           </div>
 
           <div style={{ gridColumn: '1 / -1' }}>

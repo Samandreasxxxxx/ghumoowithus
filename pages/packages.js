@@ -9,7 +9,6 @@ export default function PackagesPage() {
       <Head>
         <title>Trips · Ghumoo With Us</title>
       </Head>
-
       <FeaturedTrip />
       <ComingSoonSection />
     </>

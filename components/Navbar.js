@@ -6,7 +6,6 @@ import AnimatedLogo from './AnimatedLogo';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // Close mobile nav on route change (best-effort)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 720) setOpen(false);

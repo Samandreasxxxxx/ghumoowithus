@@ -52,10 +52,7 @@ export default function FeaturedTrip() {
             </p>
           </div>
 
-          <div className="featured-image-shell">
-            {/* Background and cinematic gradient handled by CSS.
-                Replace /public/images/cuttack-kendrapada.jpg with your own photo. */}
-          </div>
+          <div className="featured-image-shell">{/* CSS background */}</div>
         </div>
       </div>
     </section>

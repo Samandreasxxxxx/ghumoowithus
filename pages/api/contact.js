@@ -68,36 +68,33 @@ export default function ContactPage() {
               <label htmlFor="contact-name">Name</label>
               <input
                 id="contact-name"
-                name="entry.837785847" // Name
+                name="entry.837785847"
                 required
               />
             </div>
-
             <div className="register-field">
               <label htmlFor="contact-info">Email / Phone</label>
               <input
                 id="contact-info"
-                name="entry.1682520824" // Phone / contact
+                name="entry.1682520824"
                 required
               />
             </div>
-
             <div className="register-field" style={{ gridColumn: '1 / -1' }}>
               <label htmlFor="contact-message">
                 Message / What do you want to ask?
               </label>
               <textarea
                 id="contact-message"
-                name="entry.1450980613" // Message
+                name="entry.1450980613"
                 required
               />
             </div>
-
             <div className="register-field">
               <label htmlFor="contact-type">Type of inquiry</label>
               <select
                 id="contact-type"
-                name="entry.2132641869" // Type of inquiry
+                name="entry.2132641869"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -109,7 +106,6 @@ export default function ContactPage() {
                 <option>Others</option>
               </select>
             </div>
-
             <div style={{ gridColumn: '1 / -1' }}>
               <button
                 type="submit"
